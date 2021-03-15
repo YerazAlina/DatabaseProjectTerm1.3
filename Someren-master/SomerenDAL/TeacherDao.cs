@@ -1,17 +1,12 @@
 ﻿using SomerenModel;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 
 namespace SomerenDAL
 {
     public class TeacherDao : BaseDao
     {
-
         public List<Teacher> GetAllTeachers()
         {
             string query = "SELECT personID, firstName, lastName, supervisor  FROM [Person] JOIN Teachers ON Person.PersonID = Teachers.TeacherID";
@@ -32,7 +27,6 @@ namespace SomerenDAL
                     LastName = (string)(dr["lastName"].ToString()),
                     Supervisor = (string)(dr["supervisor"])
                     //BirthDate = (DateTime)(dr["birthDate"])
-
                 };
                 teachers.Add(teacher);
             }

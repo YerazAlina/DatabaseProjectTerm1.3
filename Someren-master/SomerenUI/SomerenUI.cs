@@ -47,7 +47,6 @@ namespace SomerenUI
             }
         }
         
-
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //
@@ -204,6 +203,7 @@ namespace SomerenUI
                     eventLog.Source = "Application";
                     eventLog.WriteEntry("Something went wrong while loading teachers" + e.Message, EventLogEntryType.Information, 101, 1);
                 }
+
                 MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
             }
         }
@@ -353,6 +353,58 @@ namespace SomerenUI
                 }
                 MessageBox.Show("Something went wrong while loading the Drinks: " + e.Message);
             }
+        }
+
+        private void bttnAddDrink_Click(object sender, EventArgs e)
+        {
+            Drink drink = new Drink();
+
+            drink.DrinkID = int.Parse(txtBoxDrinkId.Text);
+            drink.DrinkName = txtBoxDrinkName.Text;
+            drink.Price = decimal.Parse(txtBoxPrice.Text);
+          
+            MessageBox.Show("record added!");
+
+            DrinkService drinkService = new DrinkService();
+
+            drinkService.AddDataToDrinks(drink);
+            listViewDrinks.Items.Clear();
+
+            ShowPanel("Drinks");
+        }
+
+        private void bttnRemoveDrink_Click(object sender, EventArgs e)
+        {
+            Drink drink = new Drink();
+
+            drink.DrinkID = int.Parse(txtBoxDrinkId.Text);
+            
+            MessageBox.Show("record removed!");
+
+            DrinkService drinkService = new DrinkService();
+
+            drinkService.RemoveDataFromDrinks(drink);
+            listViewDrinks.Items.Clear();
+
+            ShowPanel("Drinks");
+        }
+
+        private void bttnUpdateDrinks_Click(object sender, EventArgs e)
+        {
+            Drink drink = new Drink();
+
+            drink.DrinkID = int.Parse(txtBoxDrinkId.Text);
+            drink.DrinkName = txtBoxDrinkName.Text;
+            drink.Price = decimal.Parse(txtBoxPrice.Text);
+
+            MessageBox.Show("record updated!");
+
+            DrinkService drinkService = new DrinkService();
+
+            drinkService.RemoveDataFromDrinks(drink);
+            listViewDrinks.Items.Clear();
+
+            ShowPanel("Drinks");
         }
     }
 }

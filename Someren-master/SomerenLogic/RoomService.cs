@@ -10,7 +10,6 @@ namespace SomerenLogic
 {
     public class RoomService
     {
-
         RoomDao roomdb;
 
         public RoomService()

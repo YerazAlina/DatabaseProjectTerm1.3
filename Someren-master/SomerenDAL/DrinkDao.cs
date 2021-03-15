@@ -30,13 +30,34 @@ namespace SomerenDAL
                     DrinkName = (string)(dr["drinkName"].ToString()),
                     Price = (decimal)(dr["price"]),
                     //Stock = (string)(dr["price"]),
-
                 };
                 drinks.Add(drink);
             }
             return drinks;
         }
 
+        public void AddDrink(Drink drink)
+        {
+            string queryDrink = $"INSERT INTO [Drinks] (drinkID, drinkName, price) Values ({drink.DrinkID},'{drink.DrinkName}', {drink.Price}) ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
 
+            ExecuteEditQuery(queryDrink, sqlParameters);
+        }
+
+        public void UpdateDrink(Drink drink)
+        {
+            string queryDrink = $"UPDATE [Drinks] SET drinkName ='{drink.DrinkName}' , price='{drink.Price}' WHERE drinkID ='{drink.DrinkID}' ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            ExecuteEditQuery(queryDrink, sqlParameters);
+        }
+
+        public void RemoveDrink(Drink drink)
+        {
+            string queryDrink = $"DELETE FROM [Drinks] WHERE drinkID ='{drink.DrinkID}' ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            ExecuteEditQuery(queryDrink, sqlParameters);
+        }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using SomerenDAL;
 using SomerenModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SomerenLogic
 {
@@ -22,6 +18,21 @@ namespace SomerenLogic
             List<Drink> drinks = drinkdb.GetAllDrinks();
 
             return drinks;
+        }
+
+        public void AddDataToDrinks(Drink drink)
+        {
+            drinkdb.AddDrink(drink);
+        }
+
+        public void UpdateDataFromDrinks(Drink drink)
+        {
+            drinkdb.UpdateDrink(drink);
+        }
+
+        public void RemoveDataFromDrinks(Drink drink)
+        {
+            drinkdb.RemoveDrink(drink);
         }
     }
 }

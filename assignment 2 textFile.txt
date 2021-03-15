@@ -1,0 +1,6 @@
+Assignment 2:
+In this assignment we have worked together as group for all variants. We always discuss in group before we make any changes in database or in the code. To keep track of our code, we used Github so everyone in a group can see the changes has been made individually.
+
+
+
+

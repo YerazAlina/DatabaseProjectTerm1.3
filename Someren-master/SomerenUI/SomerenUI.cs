@@ -181,8 +181,8 @@ namespace SomerenUI
 
             try
             {
-                TeacherService teacherService = new TeacherService(); ;
-                List<Teacher> teacherList = teacherService.GetTeachers(); ;
+                TeacherService teacherService = new TeacherService(); 
+                List<Teacher> teacherList = teacherService.GetTeachers(); 
 
                 listViewTeachers.Items.Clear();
 
@@ -223,8 +223,8 @@ namespace SomerenUI
 
             try
             {
-                RoomService roomService = new RoomService(); ;
-                List<Room> roomList = roomService.GetRooms(); ;
+                RoomService roomService = new RoomService(); 
+                List<Room> roomList = roomService.GetRooms(); 
 
                 listViewRooms.Items.Clear();
 
@@ -264,8 +264,8 @@ namespace SomerenUI
             //students
             try
             {
-                StudentService studService = new StudentService(); ;
-                List<Student> studentList = studService.GetStudents(); ;
+                StudentService studService = new StudentService(); 
+                List<Student> studentList = studService.GetStudents(); 
 
                 listViewStudentsCashReg.Items.Clear();
 
@@ -290,8 +290,8 @@ namespace SomerenUI
             //drinks
             try
             {
-                DrinkService drinkService = new DrinkService(); ;
-                List<Drink> drinkList = drinkService.GetDrinks(); ;
+                DrinkService drinkService = new DrinkService(); 
+                List<Drink> drinkList = drinkService.GetDrinks(); 
 
                 listViewDrinksCashReg.Items.Clear();
 
@@ -329,8 +329,8 @@ namespace SomerenUI
 
             try
             {
-                DrinkService drinkService2 = new DrinkService(); ;
-                List<Drink> drinkList = drinkService2.GetDrinks(); ;
+                DrinkService drinkService2 = new DrinkService(); 
+                List<Drink> drinkList = drinkService2.GetDrinks(); 
 
                 listViewDrinks.Items.Clear();
 
@@ -339,6 +339,7 @@ namespace SomerenUI
                     ListViewItem li2 = new ListViewItem(d.DrinkID.ToString());
                     li2.SubItems.Add(d.DrinkName);
                     li2.SubItems.Add(d.Price.ToString());
+                    li2.SubItems.Add(d.Stock.ToString());
                     li2.SubItems.Add(d.IsAlcoholic);
 
                     listViewDrinks.Items.Add(li2);
@@ -362,12 +363,13 @@ namespace SomerenUI
             drink.DrinkID = int.Parse(txtBoxDrinkId.Text);
             drink.DrinkName = txtBoxDrinkName.Text;
             drink.Price = decimal.Parse(txtBoxPrice.Text);
-          
+            drink.Stock = int.Parse(txtBoxStock.Text);
+
             MessageBox.Show("record added!");
 
             DrinkService drinkService = new DrinkService();
-
             drinkService.AddDataToDrinks(drink);
+
             listViewDrinks.Items.Clear();
 
             ShowPanel("Drinks");
@@ -382,8 +384,8 @@ namespace SomerenUI
             MessageBox.Show("record removed!");
 
             DrinkService drinkService = new DrinkService();
-
             drinkService.RemoveDataFromDrinks(drink);
+
             listViewDrinks.Items.Clear();
 
             ShowPanel("Drinks");
@@ -396,12 +398,13 @@ namespace SomerenUI
             drink.DrinkID = int.Parse(txtBoxDrinkId.Text);
             drink.DrinkName = txtBoxDrinkName.Text;
             drink.Price = decimal.Parse(txtBoxPrice.Text);
+            drink.Stock = int.Parse(txtBoxStock.Text);
 
             MessageBox.Show("record updated!");
 
             DrinkService drinkService = new DrinkService();
+            drinkService.UpdateDataFromDrinks(drink);
 
-            drinkService.RemoveDataFromDrinks(drink);
             listViewDrinks.Items.Clear();
 
             ShowPanel("Drinks");

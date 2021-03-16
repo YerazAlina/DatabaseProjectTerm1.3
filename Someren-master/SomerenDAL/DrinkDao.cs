@@ -13,7 +13,7 @@ namespace SomerenDAL
     {
         public List<Drink> GetAllDrinks()
         {
-            string query = "SELECT drinkID, drinkName, price, isAlcoholic FROM [Drinks]";
+            string query = "SELECT drinkID, drinkName, price, stock, isAlcoholic FROM [Drinks]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -29,7 +29,7 @@ namespace SomerenDAL
                     DrinkID = (int)dr["drinkID"],
                     DrinkName = (string)(dr["drinkName"].ToString()),
                     Price = (decimal)(dr["price"]),
-                    //Stock = (string)(dr["price"]),
+                    Stock = (int)(dr["stock"])
                 };
                 drinks.Add(drink);
             }
@@ -46,7 +46,7 @@ namespace SomerenDAL
 
         public void UpdateDrink(Drink drink)
         {
-            string queryDrink = $"UPDATE [Drinks] SET drinkName ='{drink.DrinkName}' , price='{drink.Price}' WHERE drinkID ='{drink.DrinkID}' ";
+            string queryDrink = $"UPDATE [Drinks] SET drinkName ='{drink.DrinkName}' , price ='{drink.Price}' WHERE drinkID ='{drink.DrinkID}' ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             ExecuteEditQuery(queryDrink, sqlParameters);

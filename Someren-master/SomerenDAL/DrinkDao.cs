@@ -29,7 +29,8 @@ namespace SomerenDAL
                     DrinkID = (int)dr["drinkID"],
                     DrinkName = (string)(dr["drinkName"].ToString()),
                     Price = (decimal)(dr["price"]),
-                    Stock = (int)(dr["stock"])
+                    Stock = (int)(dr["stock"]),
+                    IsAlcoholic = (string)(dr["isAlcoholic"].ToString())
                 };
                 drinks.Add(drink);
             }
@@ -38,7 +39,7 @@ namespace SomerenDAL
 
         public void AddDrink(Drink drink)
         {
-            string queryDrink = $"INSERT INTO [Drinks] (drinkID, drinkName, price) Values ({drink.DrinkID},'{drink.DrinkName}', {drink.Price}) ";
+            string queryDrink = $"INSERT INTO [Drinks] (drinkID, drinkName, price, stock, isAlcoholic) Values ({drink.DrinkID},'{drink.DrinkName}', {drink.Price}, '{drink.Stock}', '{drink.IsAlcoholic}') ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             ExecuteEditQuery(queryDrink, sqlParameters);

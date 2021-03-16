@@ -244,7 +244,6 @@
             this.lbl_Dashboard.Size = new System.Drawing.Size(371, 25);
             this.lbl_Dashboard.TabIndex = 1;
             this.lbl_Dashboard.Text = "Welcome to the Someren Application!";
-            this.lbl_Dashboard.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlStudents
             // 
@@ -305,7 +304,6 @@
             this.lbl_Students.Size = new System.Drawing.Size(207, 53);
             this.lbl_Students.TabIndex = 3;
             this.lbl_Students.Text = "Students";
-            this.lbl_Students.Click += new System.EventHandler(this.lbl_Students_Click);
             // 
             // pnlRooms
             // 
@@ -431,7 +429,6 @@
             this.lblTeachers.Size = new System.Drawing.Size(216, 53);
             this.lblTeachers.TabIndex = 3;
             this.lblTeachers.Text = "Teachers";
-            this.lblTeachers.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // pnlCashRegister
             // 

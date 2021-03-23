@@ -623,7 +623,7 @@ namespace SomerenUI
             if (confirmDelete == DialogResult.Yes)
             {
                 ActivityService activityService = new ActivityService();
-                activityService.UpdateDataFromActivities(activity);
+                activityService.UpdateDataFromActivities(activity); // can you change the method name
 
                 listViewActivities.Items.Clear();
 

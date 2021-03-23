@@ -11,5 +11,10 @@ namespace SomerenModel
         public int Number { get; set; } // StudentNumber, e.g. 474791
         
         public DateTime BirthDate { get; set; }
+
+        public override string ToString()
+        {
+            return $"Student: {FirstName}{LastName} ";
+        }
     }
 }

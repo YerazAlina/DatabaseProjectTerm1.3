@@ -12,6 +12,7 @@ namespace SomerenModel
 
         public string Supervisor { get; set; }
 
-        public DateTime BirthDate { get; set; } 
+        public DateTime BirthDate { get; set; }
+
     }
 }

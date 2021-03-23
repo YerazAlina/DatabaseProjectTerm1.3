@@ -16,6 +16,7 @@ namespace SomerenDAL
             string query = "SELECT drinkID, drinkName, price, stock, isAlcoholic FROM [Drinks]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
         }
 
         private List<Drink> ReadTables(DataTable dataTable)
@@ -29,36 +30,43 @@ namespace SomerenDAL
                     DrinkID = (int)dr["drinkID"],
                     DrinkName = (string)(dr["drinkName"].ToString()),
                     Price = (decimal)(dr["price"]),
-                    Stock = (int)(dr["stock"]),
-                    IsAlcoholic = (string)(dr["isAlcoholic"].ToString())
+                    Stock = (int)dr["stock"],
+                    IsAlcoholic = (string)dr["isAlcoholic"].ToString(),
+
                 };
                 drinks.Add(drink);
             }
             return drinks;
         }
 
-        public void AddDrink(Drink drink)
+        public void AddDrink(Drink d)
         {
-            string queryDrink = $"INSERT INTO [Drinks] (drinkID, drinkName, price, stock, isAlcoholic) Values ({drink.DrinkID},'{drink.DrinkName}', {drink.Price}, '{drink.Stock}', '{drink.IsAlcoholic}') ";
+            string price = string.Format(d.Price.ToString()).Replace(',', '.');
+            string query = $"INSERT INTO [Drinks] (drinkID, drinkName, price, stock, isAlcoholic) Values ( {d.DrinkID},'{d.DrinkName}', {price}, {d.Stock}, '{d.IsAlcoholic}') ";
+
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            ExecuteEditQuery(queryDrink, sqlParameters);
+            Console.WriteLine(query);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void UpdateDrink(Drink drink)
+        public void UpdateDrink(Drink d)
         {
-            string queryDrink = $"UPDATE [Drinks] SET drinkName ='{drink.DrinkName}' , price ='{drink.Price}' WHERE drinkID ='{drink.DrinkID}' ";
+            string price = string.Format(d.Price.ToString()).Replace(',', '.');
+            string query = $"UPDATE [Drinks] SET drinkName='{d.DrinkName}', price='{price}', stock={d.Stock}, isAlcoholic='{d.IsAlcoholic}' WHERE drinkID='{d.DrinkID}' ";
+
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            ExecuteEditQuery(queryDrink, sqlParameters);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void RemoveDrink(Drink drink)
+        public void RemoveDrink(Drink d)
         {
-            string queryDrink = $"DELETE FROM [Drinks] WHERE drinkID ='{drink.DrinkID}' ";
+            string query = $"DELETE FROM [Drinks] WHERE drinkID='{d.DrinkID}' ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            ExecuteEditQuery(queryDrink, sqlParameters);
+            ExecuteEditQuery(query, sqlParameters);
+
         }
     }
 }

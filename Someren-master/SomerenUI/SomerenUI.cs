@@ -3,12 +3,16 @@ using SomerenModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
+        //public DateTime startDate;
+        //public DateTime endDate;
+
         public SomerenUI()
         {
             InitializeComponent();
@@ -28,7 +32,8 @@ namespace SomerenUI
             pnlDrinks.Hide();
             pnlCashRegister.Hide();
             pnlStudents.Hide();
-
+            pnlRevenueReport.Hide();
+                
             //try catch 
             if (panelName == "Dashboard")
             {
@@ -54,6 +59,10 @@ namespace SomerenUI
             else if (panelName == "Drinks")
             {
                 ShowPanelDrinks();
+            }
+            else if (panelName == "Revenue Report")
+            {
+                ShowPanelRevenueReport();
             }
         }
         
@@ -92,19 +101,18 @@ namespace SomerenUI
             ShowPanel("Rooms");
         }
 
-        private void CashRegisterStripMenuItem_Click(object sender, EventArgs e)
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPanel("Drinks");
+        }
+        private void toolStripMenuItemCashRegister_Click(object sender, EventArgs e)
         {
             ShowPanel("Cash Register");
         }
 
-        private void BarServicetoolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItemRevenueReport_Click(object sender, EventArgs e)
         {
-            ShowPanel("Bar Service");
-        }
-
-        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowPanel("Drinks");
+            ShowPanel("Revenue Report");
         }
 
         private void ShowPanelDashboard()
@@ -231,7 +239,8 @@ namespace SomerenUI
                     ListViewItem li = new ListViewItem(student.Number.ToString());
                     li.SubItems.Add(student.FirstName);
                     li.SubItems.Add(student.LastName);
-                    li.Tag = student;
+                    //li.Tag = student;
+                    //student = listViewStudentsCashReg.SelectedItems[0];
 
                     listViewStudentsCashReg.Items.Add(li);
                 }
@@ -263,7 +272,6 @@ namespace SomerenUI
                     li.SubItems.Add(drink.DrinkName);
                     li.SubItems.Add(drink.Price.ToString());
                     li.SubItems.Add(drink.IsAlcoholic);
-                    li.Tag = drink;
 
                     listViewDrinksCashReg.Items.Add(li);
                 }
@@ -301,7 +309,15 @@ namespace SomerenUI
                     li.SubItems.Add(drink.Price.ToString());
                     li.SubItems.Add(drink.Stock.ToString());
                     li.SubItems.Add(drink.IsAlcoholic);
-                    li.SubItems.Add("test");
+
+                    if (drink.Stock < 10)
+                    {
+                        li.SubItems.Add("Stock nearly depleted");
+                    }
+                    else
+                    {
+                        li.SubItems.Add("Stock sufficient");
+                    }
 
                     listViewDrinks.Items.Add(li);
                 }
@@ -359,7 +375,7 @@ namespace SomerenUI
             drink.DrinkName = txtBoxDrinkName.Text;
             drink.Price = decimal.Parse(txtBoxPrice.Text);
             drink.Stock = int.Parse(txtBoxStock.Text);
-            drink.IsAlcoholic = txtBoxDrinkName.Text;
+            drink.IsAlcoholic = txtBoxAlcohol.Text;
 
             DrinkService drinkService = new DrinkService();
             drinkService.UpdateDataFromDrinks(drink);
@@ -368,6 +384,123 @@ namespace SomerenUI
 
             MessageBox.Show("record updated!");
             ShowPanel("Drinks");
+        }
+
+        private void bttnCheckOut_Click(object sender, EventArgs e)
+        {
+            
+            if (listViewDrinksCashReg.SelectedItems.Count > 0 && listViewStudentsCashReg.SelectedItems.Count > 0)
+            {
+                ListViewItem li = listViewStudentsCashReg.SelectedItems[0];
+                
+                Student s = new Student();
+                s.Number = int.Parse(li.SubItems[0].Text);
+                s.FirstName = li.SubItems[1].Text;
+                s.LastName = li.SubItems[2].Text;
+
+                ListViewItem li2 = listViewDrinksCashReg.SelectedItems[0];
+                
+                Drink d = new Drink();
+                d.DrinkID = int.Parse(li2.SubItems[0].Text);
+                d.DrinkName = li2.SubItems[1].Text;
+                d.Price = decimal.Parse(li2.SubItems[2].Text);
+
+                OrderService orderService = new OrderService(); ;
+
+                DateTime date = DateTime.Now;
+                orderService.AddDataToOrder(d, s, date);
+
+                MessageBox.Show("Order has been made!");
+                lbl_CheckOut.Text = s.ToString() + "\n" + d.ToString(); 
+            }
+        }
+
+        private void listViewDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewDrinks.SelectedItems.Count > 0)
+            {
+                ListViewItem li = listViewDrinks.SelectedItems[0];
+                txtBoxDrinkId.Text = li.SubItems[0].Text;
+                txtBoxDrinkName.Text = li.SubItems[1].Text;
+                txtBoxPrice.Text = li.SubItems[2].Text;
+            }
+        }
+
+        private void ShowPanelRevenueReport()
+        {
+            pnlRevenueReport.Show();
+        }
+
+        private void monthCalendarRevenueReport_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            try
+            {
+                
+                decimal sum = 0;
+                DateTime startDate = monthCalendarRevenueReport.SelectionRange.Start;
+                DateTime endDate = monthCalendarRevenueReport.SelectionRange.End;
+
+                DateTime today = DateTime.Today.Date;
+
+                if (startDate > today)
+                {
+                    monthCalendarRevenueReport.SelectionStart = today;
+                    throw new Exception("Invalid start date!");
+                    //MessageBox.Show("Invalid start date!");
+                }
+
+                else if (endDate > today)
+                {
+                    monthCalendarRevenueReport.SelectionEnd = today;
+                    throw new Exception("Invalid end date!");
+                    //MessageBox.Show("Invalid end date!");
+                }
+
+                else if (startDate > endDate)
+                {
+                    monthCalendarRevenueReport.SelectionRange.Start = monthCalendarRevenueReport.SelectionRange.End;
+                    throw new Exception("Start date is after end date!");
+                    //MessageBox.Show("Start date is after end date");
+                }
+
+                else if (startDate == endDate)
+                {
+
+                }
+
+
+                OrderService orderService = new OrderService();
+                List<Order> orders = orderService.GetOrders(startDate, endDate);
+
+                listViewRevRep.Items.Clear();
+
+                List<int> customers = new List<int>();
+
+                foreach (Order o in orders)
+                {
+                    sum += o.Price;
+
+                    if (!customers.Contains(o.StudentID))
+                    {
+                        customers.Add(o.StudentID);
+                    }
+                }
+
+                ListViewItem li = new ListViewItem(orders.Count.ToString());
+                li.SubItems.Add(sum.ToString());
+                li.SubItems.Add(customers.Count().ToString()); //(sum.ToString()); 
+
+                listViewRevRep.Items.Add(li);
+            }
+            catch (Exception ex)
+            {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Something went wrong while ordering the drink" + ex.Message, EventLogEntryType.Information, 101, 1);
+                }
+                MessageBox.Show("Something went wrong while ordering the drink: " + ex.Message);
+            }
         }
     }
 }

@@ -7,7 +7,12 @@
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public string IsAlcoholic { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"Drink: {DrinkName}" + "\n" + $"Price: €{Price}";
+        }
     }
 }
 
-//where drink is not water.. //in the loop fill 

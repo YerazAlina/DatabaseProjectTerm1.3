@@ -33,6 +33,7 @@ namespace SomerenUI
             pnlCashRegister.Hide();
             pnlStudents.Hide();
             pnlRevenueReport.Hide();
+            pnlActivities.Hide();
                 
             //try catch 
             if (panelName == "Dashboard")
@@ -63,6 +64,10 @@ namespace SomerenUI
             else if (panelName == "Revenue Report")
             {
                 ShowPanelRevenueReport();
+            }
+            else if (panelName == "Activities")
+            {
+                ShowPanelActivities();
             }
         }
         
@@ -105,6 +110,7 @@ namespace SomerenUI
         {
             ShowPanel("Drinks");
         }
+
         private void toolStripMenuItemCashRegister_Click(object sender, EventArgs e)
         {
             ShowPanel("Cash Register");
@@ -115,6 +121,14 @@ namespace SomerenUI
             ShowPanel("Revenue Report");
         }
 
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPanel("Activities");
+        }
+
+        /// <summary>
+        /// dashboard
+        /// </summary>
         private void ShowPanelDashboard()
         {
             //show panels 
@@ -122,6 +136,9 @@ namespace SomerenUI
             imgDashboard.Show();
         }
 
+        /// <summary>
+        /// students
+        /// </summary>
         private void ShowPanelStudents()
         {
             //show students
@@ -189,6 +206,9 @@ namespace SomerenUI
             }
         }
 
+        /// <summary>
+        /// rooms
+        /// </summary>
         private void ShowPanelRooms()
         {
             //show
@@ -221,6 +241,9 @@ namespace SomerenUI
             }
         }
 
+        /// <summary>
+        /// cash register
+        /// </summary>
         private void ShowPanelCashRegisterStudents()
         {
             //show
@@ -287,11 +310,11 @@ namespace SomerenUI
             }
         }
 
+        /// <summary>
+        /// drinks
+        /// </summary>
         private void ShowPanelDrinks()
         {
-            //test
-            //pnlDrinks.BringToFront();
-
             //show
             pnlDrinks.Show();
 
@@ -387,8 +410,7 @@ namespace SomerenUI
         }
 
         private void bttnCheckOut_Click(object sender, EventArgs e)
-        {
-            
+        { 
             if (listViewDrinksCashReg.SelectedItems.Count > 0 && listViewStudentsCashReg.SelectedItems.Count > 0)
             {
                 ListViewItem li = listViewStudentsCashReg.SelectedItems[0];
@@ -423,9 +445,14 @@ namespace SomerenUI
                 txtBoxDrinkId.Text = li.SubItems[0].Text;
                 txtBoxDrinkName.Text = li.SubItems[1].Text;
                 txtBoxPrice.Text = li.SubItems[2].Text;
+                txtBoxStock.Text = li.SubItems[3].Text;
+                txtBoxAlcohol.Text = li.SubItems[4].Text;
             }
         }
 
+        /// <summary>
+        /// revenue report
+        /// </summary>
         private void ShowPanelRevenueReport()
         {
             pnlRevenueReport.Show();
@@ -465,9 +492,8 @@ namespace SomerenUI
 
                 else if (startDate == endDate)
                 {
-
+                    endDate = endDate.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
                 }
-
 
                 OrderService orderService = new OrderService();
                 List<Order> orders = orderService.GetOrders(startDate, endDate);
@@ -501,6 +527,105 @@ namespace SomerenUI
                 }
                 MessageBox.Show("Something went wrong while ordering the drink: " + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Activites
+        /// </summary>
+        private void ShowPanelActivities()
+        {
+            //show
+            pnlActivities.Show();
+
+            try
+            {
+                ActivityService activityService = new ActivityService();
+                List<Activity> activitiesList = activityService.GetActivities();
+
+                listViewActivities.Items.Clear();
+
+                foreach (Activity activity in activitiesList)
+                {
+                    ListViewItem li = new ListViewItem(activity.ActivityId.ToString());
+                    li.SubItems.Add(activity.Description);
+                    li.SubItems.Add(activity.StartTime.ToString());
+                    li.SubItems.Add(activity.EndDate.ToString());
+
+                    listViewActivities.Items.Add(li);
+                }
+            }
+            catch (Exception e)
+            {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Something went wrong while loading Activities" + e.Message, EventLogEntryType.Information, 101, 1);
+                }
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+        }
+
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewDrinks.SelectedItems.Count > 0)
+            {
+                ListViewItem li = listViewActivities.SelectedItems[0];
+                txtBoxActivityId.Text = li.SubItems[0].Text;
+                txtBoxActivityDescription.Text = li.SubItems[1].Text;
+                txtBoxStartTimeActivity.Text = li.SubItems[2].Text;
+                txtBoxEndTimeActivity.Text = li.SubItems[3].Text;
+            }
+        }
+
+        private void bttnAddActivity_Click(object sender, EventArgs e)
+        {
+            Activity activity = new Activity();
+
+            activity.ActivityId = int.Parse(txtBoxActivityId.Text);
+            activity.Description = txtBoxActivityDescription.Text;
+            activity.StartTime = DateTime.Parse(txtBoxStartTimeActivity.Text);
+            activity.EndDate = DateTime.Parse(txtBoxEndTimeActivity.Text);
+
+            ActivityService activityService = new ActivityService();
+            activityService.AddDataToActivities(activity);
+
+            listViewActivities.Items.Clear();
+
+            MessageBox.Show("Activity added!");
+            ShowPanel("Activity");
+        }
+
+        private void bttnUpdateActivity_Click(object sender, EventArgs e)
+        {
+            Activity activity = new Activity();
+
+            activity.ActivityId = int.Parse(txtBoxActivityId.Text);
+            activity.Description = txtBoxActivityDescription.Text;
+            activity.StartTime = DateTime.Parse(txtBoxStartTimeActivity.Text);
+            activity.EndDate = DateTime.Parse(txtBoxEndTimeActivity.Text);
+
+            ActivityService activityService = new ActivityService();
+            activityService.UpdateDataFromActivities(activity);
+
+            listViewActivities.Items.Clear();
+
+            MessageBox.Show("Activity added!");
+            ShowPanel("Activity");
+        }
+
+        private void bttnDeleteActivity_Click(object sender, EventArgs e)
+        {
+            Activity activity = new Activity();
+
+            activity.ActivityId = int.Parse(txtBoxActivityId.Text);
+
+            ActivityService activityService = new ActivityService();
+            activityService.UpdateDataFromActivities(activity);
+
+            listViewActivities.Items.Clear();
+
+            MessageBox.Show("Activity added!");
+            ShowPanel("Activity");
         }
     }
 }

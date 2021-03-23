@@ -63,6 +63,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityDao.cs" />
     <Compile Include="BaseDao.cs" />
     <Compile Include="DrinkDao.cs" />
     <Compile Include="OrderDao.cs" />

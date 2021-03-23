@@ -58,7 +58,7 @@ namespace SomerenDAL
 
         public void RemoveActivity(Activity a)
         {
-            string query = $"DELETE FROM [Activity] WHERE activityID ='{a.ActivityId.ToString("yyyy-MM-dd HH:mm:ss")}' ";
+            string query = $"DELETE FROM [Activity] WHERE activityID ='{a.ActivityId}' ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             ExecuteEditQuery(query, sqlParameters);

@@ -462,7 +462,6 @@ namespace SomerenUI
         {
             try
             {
-                
                 decimal sum = 0;
                 DateTime startDate = monthCalendarRevenueReport.SelectionRange.Start;
                 DateTime endDate = monthCalendarRevenueReport.SelectionRange.End;
@@ -567,7 +566,7 @@ namespace SomerenUI
 
         private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewDrinks.SelectedItems.Count > 0)
+            if (listViewActivities.SelectedItems.Count > 0)
             {
                 ListViewItem li = listViewActivities.SelectedItems[0];
                 txtBoxActivityId.Text = li.SubItems[0].Text;
@@ -592,7 +591,7 @@ namespace SomerenUI
             listViewActivities.Items.Clear();
 
             MessageBox.Show("Activity added!");
-            ShowPanel("Activity");
+            ShowPanel("Activities");
         }
 
         private void bttnUpdateActivity_Click(object sender, EventArgs e)
@@ -609,23 +608,32 @@ namespace SomerenUI
 
             listViewActivities.Items.Clear();
 
-            MessageBox.Show("Activity added!");
-            ShowPanel("Activity");
+            MessageBox.Show("Activity Updated!");
+            ShowPanel("Activities");
         }
 
         private void bttnDeleteActivity_Click(object sender, EventArgs e)
         {
             Activity activity = new Activity();
-
             activity.ActivityId = int.Parse(txtBoxActivityId.Text);
 
-            ActivityService activityService = new ActivityService();
-            activityService.UpdateDataFromActivities(activity);
+            var confirmDelete = MessageBox.Show("Are you sure you wish to remove this activity?",
+                                     "Delete confirmed",
+                                     MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                ActivityService activityService = new ActivityService();
+                activityService.UpdateDataFromActivities(activity);
 
-            listViewActivities.Items.Clear();
+                listViewActivities.Items.Clear();
 
-            MessageBox.Show("Activity added!");
-            ShowPanel("Activity");
+                MessageBox.Show("Activity Deleted!");
+                ShowPanel("Activities");
+            }
+            else
+            {
+               //do something
+            }
         }
     }
 }

@@ -132,6 +132,7 @@
             this.lblEndTime = new System.Windows.Forms.Label();
             this.txtBoxStartTimeActivity = new System.Windows.Forms.TextBox();
             this.txtBoxEndTimeActivity = new System.Windows.Forms.TextBox();
+            this.toolStripMenuItemActivitySupervisors = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -170,6 +171,7 @@
             this.studentsToolStripMenuItem,
             this.lecturersToolStripMenuItem,
             this.activitiesToolStripMenuItem,
+            this.toolStripMenuItemActivitySupervisors,
             this.roomsToolStripMenuItem,
             this.DrinksToolStripMenuItem,
             this.toolStripMenuItemCashRegister,
@@ -955,7 +957,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(984, 332);
+            this.lblDescription.Location = new System.Drawing.Point(950, 270);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(120, 25);
             this.lblDescription.TabIndex = 15;
@@ -964,7 +966,7 @@
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(984, 404);
+            this.lblStartTime.Location = new System.Drawing.Point(950, 342);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(110, 25);
             this.lblStartTime.TabIndex = 16;
@@ -973,7 +975,7 @@
             // lblActivityId
             // 
             this.lblActivityId.AutoSize = true;
-            this.lblActivityId.Location = new System.Drawing.Point(984, 257);
+            this.lblActivityId.Location = new System.Drawing.Point(950, 195);
             this.lblActivityId.Name = "lblActivityId";
             this.lblActivityId.Size = new System.Drawing.Size(107, 25);
             this.lblActivityId.TabIndex = 17;
@@ -981,9 +983,9 @@
             // 
             // bttnAddActivity
             // 
-            this.bttnAddActivity.Location = new System.Drawing.Point(954, 575);
+            this.bttnAddActivity.Location = new System.Drawing.Point(962, 482);
             this.bttnAddActivity.Name = "bttnAddActivity";
-            this.bttnAddActivity.Size = new System.Drawing.Size(140, 74);
+            this.bttnAddActivity.Size = new System.Drawing.Size(116, 64);
             this.bttnAddActivity.TabIndex = 18;
             this.bttnAddActivity.Text = "Add";
             this.bttnAddActivity.UseVisualStyleBackColor = true;
@@ -991,9 +993,9 @@
             // 
             // bttnUpdateActivity
             // 
-            this.bttnUpdateActivity.Location = new System.Drawing.Point(1159, 575);
+            this.bttnUpdateActivity.Location = new System.Drawing.Point(1110, 482);
             this.bttnUpdateActivity.Name = "bttnUpdateActivity";
-            this.bttnUpdateActivity.Size = new System.Drawing.Size(140, 74);
+            this.bttnUpdateActivity.Size = new System.Drawing.Size(116, 64);
             this.bttnUpdateActivity.TabIndex = 19;
             this.bttnUpdateActivity.Text = "Update";
             this.bttnUpdateActivity.UseVisualStyleBackColor = true;
@@ -1001,9 +1003,9 @@
             // 
             // bttnDeleteActivity
             // 
-            this.bttnDeleteActivity.Location = new System.Drawing.Point(1349, 575);
+            this.bttnDeleteActivity.Location = new System.Drawing.Point(1254, 482);
             this.bttnDeleteActivity.Name = "bttnDeleteActivity";
-            this.bttnDeleteActivity.Size = new System.Drawing.Size(140, 74);
+            this.bttnDeleteActivity.Size = new System.Drawing.Size(116, 64);
             this.bttnDeleteActivity.TabIndex = 20;
             this.bttnDeleteActivity.Text = "Delete";
             this.bttnDeleteActivity.UseVisualStyleBackColor = true;
@@ -1011,14 +1013,14 @@
             // 
             // txtBoxActivityId
             // 
-            this.txtBoxActivityId.Location = new System.Drawing.Point(1159, 254);
+            this.txtBoxActivityId.Location = new System.Drawing.Point(1125, 192);
             this.txtBoxActivityId.Name = "txtBoxActivityId";
             this.txtBoxActivityId.Size = new System.Drawing.Size(213, 31);
             this.txtBoxActivityId.TabIndex = 21;
             // 
             // txtBoxActivityDescription
             // 
-            this.txtBoxActivityDescription.Location = new System.Drawing.Point(1159, 329);
+            this.txtBoxActivityDescription.Location = new System.Drawing.Point(1125, 267);
             this.txtBoxActivityDescription.Name = "txtBoxActivityDescription";
             this.txtBoxActivityDescription.Size = new System.Drawing.Size(213, 31);
             this.txtBoxActivityDescription.TabIndex = 22;
@@ -1026,7 +1028,7 @@
             // lblEndTime
             // 
             this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Location = new System.Drawing.Point(991, 476);
+            this.lblEndTime.Location = new System.Drawing.Point(957, 414);
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(103, 25);
             this.lblEndTime.TabIndex = 25;
@@ -1034,17 +1036,23 @@
             // 
             // txtBoxStartTimeActivity
             // 
-            this.txtBoxStartTimeActivity.Location = new System.Drawing.Point(1159, 398);
+            this.txtBoxStartTimeActivity.Location = new System.Drawing.Point(1125, 336);
             this.txtBoxStartTimeActivity.Name = "txtBoxStartTimeActivity";
             this.txtBoxStartTimeActivity.Size = new System.Drawing.Size(213, 31);
             this.txtBoxStartTimeActivity.TabIndex = 26;
             // 
             // txtBoxEndTimeActivity
             // 
-            this.txtBoxEndTimeActivity.Location = new System.Drawing.Point(1159, 470);
+            this.txtBoxEndTimeActivity.Location = new System.Drawing.Point(1125, 408);
             this.txtBoxEndTimeActivity.Name = "txtBoxEndTimeActivity";
             this.txtBoxEndTimeActivity.Size = new System.Drawing.Size(213, 31);
             this.txtBoxEndTimeActivity.TabIndex = 27;
+            // 
+            // toolStripMenuItemActivitySupervisors
+            // 
+            this.toolStripMenuItemActivitySupervisors.Name = "toolStripMenuItemActivitySupervisors";
+            this.toolStripMenuItemActivitySupervisors.Size = new System.Drawing.Size(242, 36);
+            this.toolStripMenuItemActivitySupervisors.Text = "Activity Supervisors";
             // 
             // SomerenUI
             // 
@@ -1202,6 +1210,7 @@
         private System.Windows.Forms.Button bttnAddActivity;
         private System.Windows.Forms.TextBox txtBoxEndTimeActivity;
         private System.Windows.Forms.TextBox txtBoxStartTimeActivity;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemActivitySupervisors;
     }
 }
 

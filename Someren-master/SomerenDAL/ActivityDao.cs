@@ -13,7 +13,7 @@ namespace SomerenDAL
     {
         public List<Activity> GetAllActivities()
         {
-            string query = "SELECT activityID, description, startDateTime, endDateTime FROM [Activity]";
+            string query = "SELECT activityID, [description], startDateTime, endDateTime FROM [Activity]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -40,16 +40,15 @@ namespace SomerenDAL
 
         public void AddActivity(Activity a)
         {
-            string query = $"INSERT INTO [Activity] (activityID, description, startDateTime, endDateTime) Values ( {a.ActivityId},'{a.Description}', {a.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}, {a.EndDate.ToString("yyyy-MM-dd HH:mm:ss")}) ";
+            string query = $"INSERT INTO [Activity] (activityID, [description], startDateTime, endDateTime) Values ( {a.ActivityId},'{a.Description}', '{a.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', '{a.EndDate.ToString("yyyy-MM-dd HH:mm:ss")}') ";
             SqlParameter[] sqlParameters = new SqlParameter[0];                                                     //startDate.ToString("yyyy-MM-dd HH:mm:ss")
 
-            //Console.WriteLine(query);
             ExecuteEditQuery(query, sqlParameters);
         }
 
         public void UpdateActivity(Activity a)
         {
-            string query = $"UPDATE [Activity] SET description ='{a.Description}', startDateTime ='{a.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', endDateTime ={a.EndDate.ToString("yyyy-MM-dd HH:mm:ss")} WHERE activityID ='{a.ActivityId}' ";
+            string query = $"UPDATE [Activity] SET [description] ='{a.Description}', startDateTime ='{a.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', endDateTime = '{a.EndDate.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE activityID ='{a.ActivityId}' ";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
@@ -64,6 +63,5 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
 
         }
-
     }
 }

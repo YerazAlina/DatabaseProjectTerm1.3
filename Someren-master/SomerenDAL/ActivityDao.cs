@@ -41,8 +41,7 @@ namespace SomerenDAL
         public void AddActivity(Activity a)
         {
             string query = $"INSERT INTO [Activity] (activityID, [description], startDateTime, endDateTime) Values ( {a.ActivityId},'{a.Description}', '{a.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', '{a.EndDate.ToString("yyyy-MM-dd HH:mm:ss")}') ";
-            SqlParameter[] sqlParameters = new SqlParameter[0];                                                     //startDate.ToString("yyyy-MM-dd HH:mm:ss")
-
+            SqlParameter[] sqlParameters = new SqlParameter[0]; 
             ExecuteEditQuery(query, sqlParameters);
         }
 

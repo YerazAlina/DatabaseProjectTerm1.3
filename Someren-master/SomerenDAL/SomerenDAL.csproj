@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityDao.cs" />
+    <Compile Include="ParticipantsDao.cs" />
+    <Compile Include="SupervisorDao.cs" />
     <Compile Include="BaseDao.cs" />
     <Compile Include="DrinkDao.cs" />
     <Compile Include="OrderDao.cs" />

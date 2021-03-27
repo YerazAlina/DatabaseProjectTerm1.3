@@ -14,5 +14,10 @@ namespace SomerenModel
 
         public DateTime BirthDate { get; set; }
 
+        public override string ToString()
+        {
+            return $"{FirstName}";
+        }
+
     }
 }

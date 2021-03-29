@@ -10,9 +10,15 @@ namespace SomerenUI
 {
     public partial class SomerenUI : Form
     {
-        public SomerenUI()
+        public SomerenUI(User user)
         {
             InitializeComponent();
+
+            bttnAddActivity.Enabled = (user.AdminStatus == "admin");
+            bttnDeleteActivity.Enabled = (user.AdminStatus == "admin");
+            bttnUpdateActivity.Enabled = (user.AdminStatus == "admin");
+
+            //BuyDrink.Enabled = (user.AdminStatus == "admin");
         }
 
         private void ShowPanel(string panelName)
@@ -69,7 +75,7 @@ namespace SomerenUI
             }
             else if (panelName == "Activity Participants")
             {
-                //ShowPanelActivityPartcipants();
+                ShowPanelActivityPartcipants();
             }
         }
 
@@ -759,6 +765,12 @@ namespace SomerenUI
             string[] words = students.Split(' ');
 
             txtBoxTeacherId.Text = words[0];
+        }
+
+        /// activities participants
+        public void ShowPanelActivityPartcipants()
+        {
+            pnlActPart.Show();
         }
     }
 }

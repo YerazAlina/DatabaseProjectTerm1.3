@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="ActivityDao.cs" />
     <Compile Include="ParticipantsDao.cs" />
+    <Compile Include="RegisterDao.cs" />
     <Compile Include="SupervisorDao.cs" />
     <Compile Include="BaseDao.cs" />
     <Compile Include="DrinkDao.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="RoomDao.cs" />
     <Compile Include="StudentDao.cs" />
     <Compile Include="TeacherDao.cs" />
+    <Compile Include="UserDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SomerenModel\SomerenModel.csproj">

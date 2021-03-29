@@ -23,7 +23,9 @@ namespace SomerenUI
         {
             string Key1 = "XsZAb - tgz3PsD - qYh69un - WQCEx";
             string Key2 = "XsZAb-tgz3PsD-qYh69un-WQCEx";
+           
             User newUser = new User();
+
             newUser.Username = txtBoxEmailReg.Text;
             newUser.Password = txtBoxPasswordReg.Text;
             newUser.SecretQuestion = comboBoxQuestions.SelectedItem.ToString();

@@ -34,6 +34,7 @@ namespace SomerenUI
             pnlRevenueReport.Hide();
             pnlActivities.Hide();
             pnlSupervisorsAct.Hide();
+            pnlActPart.Hide();
 
             //show panel if: 
             if (panelName == "Dashboard")

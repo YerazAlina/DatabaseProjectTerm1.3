@@ -22,5 +22,16 @@ namespace SomerenLogic
             User user = userdb.GetUser(username, password);
             return user;
         }
+
+        public User GetUserByUsername(string username)
+        {
+            User user = userdb.GetUserByUsername(username);
+            return user;
+        }
+
+        public void UpdateUserPassword(string password, string username)
+        {
+            userdb.UpdateUserPassword(password, username);   
+        }
     }
 }

@@ -27,7 +27,31 @@ namespace SomerenDAL
             }
         }
 
-        private List<User> ReadTables(DataTable dataTable)
+        public User GetUserByUsername(string username)
+        {
+            string query = $"SELECT username, password, adminStatus, secretQuestion, secretAnswer FROM [Users] WHERE username = '{username}'";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            List<User> users = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
+            if (users.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return users[0];
+            }
+        }
+
+        public void UpdateUserPassword(string password, string username)
+        {
+            string query = $"UPDATE [Users] SET password='{password}' WHERE username='{username}' ";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public List<User> ReadTables(DataTable dataTable)
         {
             List<User> users = new List<User>();
 
@@ -40,7 +64,6 @@ namespace SomerenDAL
                 user.AdminStatus = (string)(dr["adminStatus"]);
                 user.SecretQuestion = (string)(dr["secretQuestion"]);
                 user.SecretAnswer = (string)(dr["secretAnswer"]);
-
 
                 users.Add(user);
             }

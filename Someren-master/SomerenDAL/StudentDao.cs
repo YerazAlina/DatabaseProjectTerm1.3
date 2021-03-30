@@ -26,7 +26,6 @@ namespace SomerenDAL
                     Number = (int)dr["personID"],
                     FirstName = (string)(dr["firstName"].ToString()),
                     LastName = (string)(dr["lastName"].ToString()),
-                    //BirthDate = (DateTime)(dr["birthDate"])
                 };
                 students.Add(student);
             }

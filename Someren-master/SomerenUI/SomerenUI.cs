@@ -688,7 +688,7 @@ namespace SomerenUI
 
             foreach (Teacher t in teacherList)
             {
-                comboBoxSupervisors.Items.Add($"{t}");
+                comboBoxSupervisors.Items.Add(t);
             }
         }
 
@@ -817,7 +817,7 @@ namespace SomerenUI
 
             foreach (Student student in studentList)
             {
-                comboBoxParticpants.Items.Add($"{student}");
+                comboBoxParticpants.Items.Add(student);
             }
         }
 

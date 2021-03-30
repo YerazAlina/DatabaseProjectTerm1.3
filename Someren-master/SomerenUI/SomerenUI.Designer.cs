@@ -219,7 +219,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(2226, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(2741, 42);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -230,7 +230,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(155, 36);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(155, 42);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -256,63 +256,63 @@
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(128, 36);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(128, 42);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(131, 36);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(131, 42);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(130, 36);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(130, 42);
             this.activitiesToolStripMenuItem.Text = "Activities";
             this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(107, 36);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(107, 42);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
             // DrinksToolStripMenuItem
             // 
             this.DrinksToolStripMenuItem.Name = "DrinksToolStripMenuItem";
-            this.DrinksToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
+            this.DrinksToolStripMenuItem.Size = new System.Drawing.Size(102, 42);
             this.DrinksToolStripMenuItem.Text = "Drinks";
             this.DrinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click);
             // 
             // toolStripMenuItemCashRegister
             // 
             this.toolStripMenuItemCashRegister.Name = "toolStripMenuItemCashRegister";
-            this.toolStripMenuItemCashRegister.Size = new System.Drawing.Size(178, 36);
+            this.toolStripMenuItemCashRegister.Size = new System.Drawing.Size(178, 42);
             this.toolStripMenuItemCashRegister.Text = "Cash Register";
             this.toolStripMenuItemCashRegister.Click += new System.EventHandler(this.toolStripMenuItemCashRegister_Click);
             // 
             // toolStripMenuItemRevenueReport
             // 
             this.toolStripMenuItemRevenueReport.Name = "toolStripMenuItemRevenueReport";
-            this.toolStripMenuItemRevenueReport.Size = new System.Drawing.Size(204, 36);
+            this.toolStripMenuItemRevenueReport.Size = new System.Drawing.Size(204, 42);
             this.toolStripMenuItemRevenueReport.Text = "Revenue Report";
             this.toolStripMenuItemRevenueReport.Click += new System.EventHandler(this.toolStripMenuItemRevenueReport_Click);
             // 
             // toolStripMenuItemActivitySupervisors
             // 
             this.toolStripMenuItemActivitySupervisors.Name = "toolStripMenuItemActivitySupervisors";
-            this.toolStripMenuItemActivitySupervisors.Size = new System.Drawing.Size(242, 36);
+            this.toolStripMenuItemActivitySupervisors.Size = new System.Drawing.Size(242, 42);
             this.toolStripMenuItemActivitySupervisors.Text = "Activity Supervisors";
             this.toolStripMenuItemActivitySupervisors.Click += new System.EventHandler(this.toolStripMenuItemActivitySupervisors_Click);
             // 
             // toolStripMenuItemActParticipants
             // 
             this.toolStripMenuItemActParticipants.Name = "toolStripMenuItemActParticipants";
-            this.toolStripMenuItemActParticipants.Size = new System.Drawing.Size(241, 36);
+            this.toolStripMenuItemActParticipants.Size = new System.Drawing.Size(241, 42);
             this.toolStripMenuItemActParticipants.Text = "Activity Participants";
             this.toolStripMenuItemActParticipants.Click += new System.EventHandler(this.toolStripMenuItemActParticipants_Click);
             // 
@@ -323,7 +323,7 @@
             this.pnlDashboard.Location = new System.Drawing.Point(24, 52);
             this.pnlDashboard.Margin = new System.Windows.Forms.Padding(6);
             this.pnlDashboard.Name = "pnlDashboard";
-            this.pnlDashboard.Size = new System.Drawing.Size(1876, 897);
+            this.pnlDashboard.Size = new System.Drawing.Size(2172, 897);
             this.pnlDashboard.TabIndex = 2;
             // 
             // lbl_Dashboard
@@ -354,7 +354,7 @@
             this.pnlStudents.Location = new System.Drawing.Point(24, 47);
             this.pnlStudents.Margin = new System.Windows.Forms.Padding(6);
             this.pnlStudents.Name = "pnlStudents";
-            this.pnlStudents.Size = new System.Drawing.Size(1876, 897);
+            this.pnlStudents.Size = new System.Drawing.Size(2166, 897);
             this.pnlStudents.TabIndex = 4;
             // 
             // listViewStudents
@@ -414,7 +414,7 @@
             this.pnlRooms.Location = new System.Drawing.Point(24, 46);
             this.pnlRooms.Margin = new System.Windows.Forms.Padding(6);
             this.pnlRooms.Name = "pnlRooms";
-            this.pnlRooms.Size = new System.Drawing.Size(1876, 902);
+            this.pnlRooms.Size = new System.Drawing.Size(2172, 902);
             this.pnlRooms.TabIndex = 7;
             // 
             // listViewRooms
@@ -474,7 +474,7 @@
             this.pnlTeachers.Location = new System.Drawing.Point(24, 46);
             this.pnlTeachers.Margin = new System.Windows.Forms.Padding(6);
             this.pnlTeachers.Name = "pnlTeachers";
-            this.pnlTeachers.Size = new System.Drawing.Size(1876, 903);
+            this.pnlTeachers.Size = new System.Drawing.Size(2166, 903);
             this.pnlTeachers.TabIndex = 6;
             // 
             // listViewTeachers
@@ -542,7 +542,7 @@
             this.pnlCashRegister.Location = new System.Drawing.Point(24, 42);
             this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(6);
             this.pnlCashRegister.Name = "pnlCashRegister";
-            this.pnlCashRegister.Size = new System.Drawing.Size(1876, 902);
+            this.pnlCashRegister.Size = new System.Drawing.Size(2172, 902);
             this.pnlCashRegister.TabIndex = 8;
             // 
             // groupBoxOrder
@@ -674,7 +674,7 @@
             this.pnlRevenueReport.Location = new System.Drawing.Point(24, 42);
             this.pnlRevenueReport.Margin = new System.Windows.Forms.Padding(6);
             this.pnlRevenueReport.Name = "pnlRevenueReport";
-            this.pnlRevenueReport.Size = new System.Drawing.Size(1876, 902);
+            this.pnlRevenueReport.Size = new System.Drawing.Size(2172, 902);
             this.pnlRevenueReport.TabIndex = 9;
             // 
             // lblrevrep
@@ -756,7 +756,7 @@
             this.pnlActivities.Location = new System.Drawing.Point(24, 42);
             this.pnlActivities.Margin = new System.Windows.Forms.Padding(6);
             this.pnlActivities.Name = "pnlActivities";
-            this.pnlActivities.Size = new System.Drawing.Size(1876, 902);
+            this.pnlActivities.Size = new System.Drawing.Size(2172, 902);
             this.pnlActivities.TabIndex = 15;
             // 
             // listViewActivities
@@ -948,7 +948,7 @@
             this.pnlSupervisorsAct.Location = new System.Drawing.Point(24, 42);
             this.pnlSupervisorsAct.Margin = new System.Windows.Forms.Padding(6);
             this.pnlSupervisorsAct.Name = "pnlSupervisorsAct";
-            this.pnlSupervisorsAct.Size = new System.Drawing.Size(1876, 902);
+            this.pnlSupervisorsAct.Size = new System.Drawing.Size(2172, 902);
             this.pnlSupervisorsAct.TabIndex = 28;
             // 
             // label1
@@ -1113,6 +1113,9 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlDrinks.Controls.Add(this.txtBoxAlcohol);
             this.pnlDrinks.Controls.Add(this.txtBoxStock);
             this.pnlDrinks.Controls.Add(this.txtBoxPrice);
@@ -1133,40 +1136,40 @@
             this.pnlDrinks.Location = new System.Drawing.Point(24, 46);
             this.pnlDrinks.Margin = new System.Windows.Forms.Padding(6);
             this.pnlDrinks.Name = "pnlDrinks";
-            this.pnlDrinks.Size = new System.Drawing.Size(1876, 902);
+            this.pnlDrinks.Size = new System.Drawing.Size(2572, 902);
             this.pnlDrinks.TabIndex = 9;
             // 
             // txtBoxAlcohol
             // 
-            this.txtBoxAlcohol.Location = new System.Drawing.Point(1634, 541);
+            this.txtBoxAlcohol.Location = new System.Drawing.Point(1489, 541);
             this.txtBoxAlcohol.Name = "txtBoxAlcohol";
             this.txtBoxAlcohol.Size = new System.Drawing.Size(196, 31);
             this.txtBoxAlcohol.TabIndex = 19;
             // 
             // txtBoxStock
             // 
-            this.txtBoxStock.Location = new System.Drawing.Point(1634, 476);
+            this.txtBoxStock.Location = new System.Drawing.Point(1489, 476);
             this.txtBoxStock.Name = "txtBoxStock";
             this.txtBoxStock.Size = new System.Drawing.Size(196, 31);
             this.txtBoxStock.TabIndex = 18;
             // 
             // txtBoxPrice
             // 
-            this.txtBoxPrice.Location = new System.Drawing.Point(1634, 408);
+            this.txtBoxPrice.Location = new System.Drawing.Point(1489, 408);
             this.txtBoxPrice.Name = "txtBoxPrice";
             this.txtBoxPrice.Size = new System.Drawing.Size(196, 31);
             this.txtBoxPrice.TabIndex = 17;
             // 
             // txtBoxDrinkName
             // 
-            this.txtBoxDrinkName.Location = new System.Drawing.Point(1634, 344);
+            this.txtBoxDrinkName.Location = new System.Drawing.Point(1489, 344);
             this.txtBoxDrinkName.Name = "txtBoxDrinkName";
             this.txtBoxDrinkName.Size = new System.Drawing.Size(196, 31);
             this.txtBoxDrinkName.TabIndex = 16;
             // 
             // txtBoxDrinkId
             // 
-            this.txtBoxDrinkId.Location = new System.Drawing.Point(1634, 281);
+            this.txtBoxDrinkId.Location = new System.Drawing.Point(1489, 281);
             this.txtBoxDrinkId.Name = "txtBoxDrinkId";
             this.txtBoxDrinkId.Size = new System.Drawing.Size(196, 31);
             this.txtBoxDrinkId.TabIndex = 15;
@@ -1174,7 +1177,7 @@
             // isAlcoholic
             // 
             this.isAlcoholic.AutoSize = true;
-            this.isAlcoholic.Location = new System.Drawing.Point(1428, 541);
+            this.isAlcoholic.Location = new System.Drawing.Point(1283, 541);
             this.isAlcoholic.Name = "isAlcoholic";
             this.isAlcoholic.Size = new System.Drawing.Size(99, 25);
             this.isAlcoholic.TabIndex = 14;
@@ -1183,7 +1186,7 @@
             // lblStock
             // 
             this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(1428, 476);
+            this.lblStock.Location = new System.Drawing.Point(1283, 476);
             this.lblStock.Name = "lblStock";
             this.lblStock.Size = new System.Drawing.Size(66, 25);
             this.lblStock.TabIndex = 13;
@@ -1192,7 +1195,7 @@
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(1428, 408);
+            this.lblPrice.Location = new System.Drawing.Point(1283, 408);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(61, 25);
             this.lblPrice.TabIndex = 12;
@@ -1201,7 +1204,7 @@
             // lblDrinkName
             // 
             this.lblDrinkName.AutoSize = true;
-            this.lblDrinkName.Location = new System.Drawing.Point(1428, 347);
+            this.lblDrinkName.Location = new System.Drawing.Point(1283, 347);
             this.lblDrinkName.Name = "lblDrinkName";
             this.lblDrinkName.Size = new System.Drawing.Size(124, 25);
             this.lblDrinkName.TabIndex = 11;
@@ -1210,7 +1213,7 @@
             // lblDrinkId
             // 
             this.lblDrinkId.AutoSize = true;
-            this.lblDrinkId.Location = new System.Drawing.Point(1428, 284);
+            this.lblDrinkId.Location = new System.Drawing.Point(1283, 284);
             this.lblDrinkId.Name = "lblDrinkId";
             this.lblDrinkId.Size = new System.Drawing.Size(82, 25);
             this.lblDrinkId.TabIndex = 10;
@@ -1218,7 +1221,7 @@
             // 
             // bttnUpdateDrinks
             // 
-            this.bttnUpdateDrinks.Location = new System.Drawing.Point(1720, 629);
+            this.bttnUpdateDrinks.Location = new System.Drawing.Point(1575, 629);
             this.bttnUpdateDrinks.Name = "bttnUpdateDrinks";
             this.bttnUpdateDrinks.Size = new System.Drawing.Size(110, 80);
             this.bttnUpdateDrinks.TabIndex = 9;
@@ -1228,7 +1231,7 @@
             // 
             // bttnAddDrink
             // 
-            this.bttnAddDrink.Location = new System.Drawing.Point(1580, 629);
+            this.bttnAddDrink.Location = new System.Drawing.Point(1435, 629);
             this.bttnAddDrink.Name = "bttnAddDrink";
             this.bttnAddDrink.Size = new System.Drawing.Size(110, 80);
             this.bttnAddDrink.TabIndex = 8;
@@ -1238,7 +1241,7 @@
             // 
             // bttnRemoveDrink
             // 
-            this.bttnRemoveDrink.Location = new System.Drawing.Point(1433, 629);
+            this.bttnRemoveDrink.Location = new System.Drawing.Point(1288, 629);
             this.bttnRemoveDrink.Name = "bttnRemoveDrink";
             this.bttnRemoveDrink.Size = new System.Drawing.Size(110, 80);
             this.bttnRemoveDrink.TabIndex = 7;
@@ -1260,7 +1263,7 @@
             this.listViewDrinks.Location = new System.Drawing.Point(45, 122);
             this.listViewDrinks.Margin = new System.Windows.Forms.Padding(6);
             this.listViewDrinks.Name = "listViewDrinks";
-            this.listViewDrinks.Size = new System.Drawing.Size(1246, 587);
+            this.listViewDrinks.Size = new System.Drawing.Size(1182, 587);
             this.listViewDrinks.TabIndex = 6;
             this.listViewDrinks.UseCompatibleStateImageBehavior = false;
             this.listViewDrinks.View = System.Windows.Forms.View.Details;
@@ -1300,7 +1303,7 @@
             // 
             this.pictureBox5.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
-            this.pictureBox5.Location = new System.Drawing.Point(1610, 0);
+            this.pictureBox5.Location = new System.Drawing.Point(1605, 2);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(260, 236);
@@ -1335,7 +1338,7 @@
             this.pnlActPart.Location = new System.Drawing.Point(24, 42);
             this.pnlActPart.Margin = new System.Windows.Forms.Padding(6);
             this.pnlActPart.Name = "pnlActPart";
-            this.pnlActPart.Size = new System.Drawing.Size(1876, 902);
+            this.pnlActPart.Size = new System.Drawing.Size(2172, 902);
             this.pnlActPart.TabIndex = 35;
             // 
             // lblActPart
@@ -1502,8 +1505,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2226, 972);
+            this.ClientSize = new System.Drawing.Size(2741, 1018);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlActPart);
             this.Controls.Add(this.pnlSupervisorsAct);
             this.Controls.Add(this.pnlActivities);
@@ -1513,7 +1517,6 @@
             this.Controls.Add(this.pnlTeachers);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlDashboard);
-            this.Controls.Add(this.pnlDrinks);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(6);

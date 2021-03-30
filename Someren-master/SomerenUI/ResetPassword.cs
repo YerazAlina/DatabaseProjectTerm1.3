@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,12 +25,16 @@ namespace SomerenUI
 
         private void bttnResetPassword_Click(object sender, EventArgs e)
         {
+            Hash hash = new Hash();
+
             if (txtBoxPassword.Text == txtBoxPasswordConfirm.Text)
             {
-                user.Password = txtBoxPassword.Text;
+                string password = txtBoxPassword.Text;
+
+                user.Password = hash.EncryptPassword(password);
                 UserService userService = new UserService();
                 userService.UpdateUserPassword(user.Password, user.Username);
-               
+
                 MessageBox.Show("Password is Changed!");
 
                 Login login = new Login();

@@ -18,7 +18,18 @@ namespace SomerenUI
             bttnDeleteActivity.Enabled = (user.AdminStatus == "admin");
             bttnUpdateActivity.Enabled = (user.AdminStatus == "admin");
 
-            //BuyDrink.Enabled = (user.AdminStatus == "admin");
+            bttnAddDrink.Enabled = (user.AdminStatus == "admin");
+            bttnRemoveDrink.Enabled = (user.AdminStatus == "admin");
+            bttnUpdateDrinks.Enabled = (user.AdminStatus == "admin");
+
+            bttnAddParticipant.Enabled = (user.AdminStatus == "admin");
+            bttnRmvParticpant.Enabled = (user.AdminStatus == "admin");
+            
+            bttnAddSupervisor.Enabled = (user.AdminStatus == "admin");
+            bttnRemoveSupervisor.Enabled = (user.AdminStatus == "admin");
+
+            bttnCheckOut.Enabled = (user.AdminStatus == "admin");
+
         }
 
         private void ShowPanel(string panelName)

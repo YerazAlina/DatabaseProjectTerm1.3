@@ -1,14 +1,9 @@
 ﻿using SomerenLogic;
 using SomerenModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SomerenUI
 {
@@ -27,7 +22,7 @@ namespace SomerenUI
             UserService userService = new UserService();
             user = userService.GetUserByUsername(username);
 
-            if (user == null) 
+            if (user == null)
             {
                 MessageBox.Show("User does not exist!");
             }
@@ -48,13 +43,17 @@ namespace SomerenUI
 
         private void bttnLogin_Click(object sender, EventArgs e) //loging in with existing user
         {
-            string username = txtBoxUsername.Text;
-            string password = txtBoxPassword.Text;
+            Hash hash = new Hash();
 
             User user = new User();
             UserService userService = new UserService();
 
-            user = userService.GetUser(username, password);
+            string username = txtBoxUsername.Text;
+
+            string password = txtBoxPassword.Text;
+            user.Password = hash.EncryptPassword(password);
+
+            user = userService.GetUser(username, user.Password);
 
             if (user != null)
             {

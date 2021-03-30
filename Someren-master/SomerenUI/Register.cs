@@ -1,13 +1,8 @@
 ﻿using SomerenLogic;
 using SomerenModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SomerenUI
@@ -21,13 +16,17 @@ namespace SomerenUI
 
         private void bttnCreateNewAccount_Click(object sender, EventArgs e)
         {
+            Hash hash = new Hash();
+
             string Key1 = "XsZAb - tgz3PsD - qYh69un - WQCEx";
             string Key2 = "XsZAb-tgz3PsD-qYh69un-WQCEx";
            
             User newUser = new User();
-
             newUser.Username = txtBoxEmailReg.Text;
-            newUser.Password = txtBoxPasswordReg.Text;
+
+            string password = txtBoxPasswordReg.Text;
+            newUser.Password = hash.EncryptPassword(password);
+
             newUser.SecretQuestion = comboBoxQuestions.SelectedItem.ToString();
             newUser.SecretAnswer = txtBoxSecretQuestionAnwser.Text;
 
@@ -57,5 +56,6 @@ namespace SomerenUI
             comboBoxQuestions.Items.Add("In what town or city did your parents meet?");
             comboBoxQuestions.Items.Add("What was your childhood nickname?");
         }
+
     }
 }

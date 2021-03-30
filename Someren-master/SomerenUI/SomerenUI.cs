@@ -145,6 +145,11 @@ namespace SomerenUI
             ShowPanel("Activity Supervisors");
         }
 
+        private void toolStripMenuItemActParticipants_Click(object sender, EventArgs e)
+        {
+            ShowPanel("Activity Participants");
+        }
+
         /// dashboard
         private void ShowPanelDashboard()
         {
@@ -274,8 +279,6 @@ namespace SomerenUI
                     ListViewItem li = new ListViewItem(student.Number.ToString());
                     li.SubItems.Add(student.FirstName);
                     li.SubItems.Add(student.LastName);
-                    //li.Tag = student;
-                    //student = listViewStudentsCashReg.SelectedItems[0];
 
                     listViewStudentsCashReg.Items.Add(li);
                 }
@@ -630,11 +633,6 @@ namespace SomerenUI
                 MessageBox.Show("Activity Deleted!");
                 ShowPanel("Activities");
             }
-            else
-            {
-                //do something
-                //listViewActivities.Items.Clear();
-            }
         }
 
         /// activities supervisor
@@ -680,7 +678,6 @@ namespace SomerenUI
             foreach (Teacher t in teacherList)
             {
                 comboBoxSupervisors.Items.Add($"{t}");
-                //comboBoxTeacherList.Items.Add($"{t}");
             }
         }
 
@@ -755,15 +752,14 @@ namespace SomerenUI
 
                 listViewActivities.Items.Clear();
 
-                MessageBox.Show("Activity Deleted!");
-                ShowPanel("Activities");
+                ShowPanel("Activity Supervisors");
             }
         }
 
         private void comboBoxSupervisors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string students = comboBoxSupervisors.SelectedItem.ToString();
-            string[] words = students.Split(' ');
+            string teachers = comboBoxSupervisors.SelectedItem.ToString();
+            string[] words = teachers.Split(' ');
 
             txtBoxTeacherId.Text = words[0];
         }
@@ -772,6 +768,128 @@ namespace SomerenUI
         public void ShowPanelActivityPartcipants()
         {
             pnlActPart.Show();
+
+            try
+            {
+                ActivityService activityService = new ActivityService();
+                List<Activity> activitiesList = activityService.GetActivities();
+
+                listViewActPart.Items.Clear();
+
+                foreach (Activity a in activitiesList)
+                {
+                    ListViewItem li = new ListViewItem(a.ActivityId.ToString());
+                    li.SubItems.Add(a.Description);
+                    li.SubItems.Add(a.StartTime.ToString());
+                    li.SubItems.Add(a.EndDate.ToString());
+
+                    listViewActPart.Items.Add(li);
+                }
+            }
+            catch (Exception e)
+            {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Something went wrong while loading Activities" + e.Message, EventLogEntryType.Information, 101, 1);
+                }
+                MessageBox.Show("Something went wrong while loading the Activities: " + e.Message);
+            }
+
+            ShowStudents();
+        }
+
+        private void ShowStudents()
+        {
+            StudentService studentService = new StudentService();
+            List<Student> studentList = studentService.GetStudents();
+
+            foreach (Student student in studentList)
+            {
+                comboBoxParticpants.Items.Add($"{student}");
+            }
+        }
+
+        private void listViewActPart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int activityID = 0;
+            if (listViewActPart.SelectedItems.Count > 0)
+            {
+                ListViewItem li = listViewActPart.SelectedItems[0];
+                activityID = int.Parse(li.SubItems[0].Text);
+
+                txtBoxActIdActPart.Text = li.SubItems[0].Text;
+            }
+            try
+            {
+                ParticipantsService participantsService = new ParticipantsService();
+                List<Participants> participantsList = participantsService.GetParticipant(activityID);
+
+                listViewParticipants.Items.Clear();
+
+                foreach (Participants participant in participantsList)
+                {
+                    ListViewItem li = new ListViewItem(participant.StudentID.ToString());
+                    li.SubItems.Add(participant.ParticipantName);
+                    li.SubItems.Add(participant.ActivityID.ToString());
+
+                    listViewParticipants.Items.Add(li);
+                }
+            }
+            catch (Exception er)
+            {
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry("Something went wrong while loading Activities" + er.Message, EventLogEntryType.Information, 101, 1);
+                }
+                MessageBox.Show("Something went wrong while loading the Activities: " + er.Message);
+            }
+        }
+
+        private void bttnRmvParticpant_Click(object sender, EventArgs e)
+        {
+            Participants participant = new Participants();
+            participant.StudentID = int.Parse(txtBoxStudentIdActPart.Text);
+
+            ParticipantsService participantsService = new ParticipantsService();
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure that you want to delete this Participant?", "Remove Participant", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                participantsService.RemoveParticipant(participant);
+                MessageBox.Show("Participant Removed", "Done", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                listViewActivities.Items.Clear();
+                ShowPanel("Activity Participants");
+            }
+        }
+
+        private void bttnAddParticipant_Click(object sender, EventArgs e)
+        {
+            Participants participant = new Participants();
+
+            participant.ActivityID = int.Parse(txtBoxActIdActPart.Text);
+            participant.StudentID = int.Parse(txtBoxStudentIdActPart.Text);
+
+            ParticipantsService participantsService = new ParticipantsService();
+            participantsService.AddtoParticipant(participant);
+
+            listViewActivities.Items.Clear();
+
+            MessageBox.Show("Participant added!");
+            ShowPanel("Activity Participants");
+
+            listViewActPart_SelectedIndexChanged(sender, e);
+        }
+
+        private void comboBoxParticpants_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string student = comboBoxParticpants.SelectedItem.ToString();
+            string[] words = student.Split(' ');
+
+            txtBoxStudentIdActPart.Text = words[0];
         }
     }
 }

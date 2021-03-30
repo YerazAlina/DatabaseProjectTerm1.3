@@ -16,13 +16,15 @@ namespace SomerenLogic
         {
             participantsdb = new ParticipantsDao();
         }
+
         public List<Participants> GetParticipant(int activityID)
         {
             List<Participants> participants = participantsdb.GetAllParticipants(activityID);
 
             return participants;
         }
-        public void AddDatetoParticipant(Participants participants)
+
+        public void AddtoParticipant(Participants participants)
         {
             participantsdb.AddParticipant(participants);
         }
